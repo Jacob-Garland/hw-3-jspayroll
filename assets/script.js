@@ -2,8 +2,49 @@
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
 // Collect employee data
+// I accidentally developed this block of code below in my "course" folder over this last weekend, so copy/paste was used here.
+// I started with building the 'while' loop, setting the parameters for that also. 
+// Then I created the three prompt windows to collect properties.
+// I had trouble with the next part, creating an array from collected objects while adding more. 
+// Forgot to add the confirm window, so I added that at this point.
+// To finish I debugged a few times and review a few activities to produce this block.
+// That's when I realized I hadnt created a repo and I had started coding where I was reviewing the syllabus. Oops! So copied block to here    
 const collectEmployees = function () {
-  // TODO: Get user input to create and return an array of employee objects
+    const employees = [];
+    let keepgoing = true;
+  
+    while (keepgoing) {
+      const firstName = prompt("Enter Employee First Name:", "First Name")
+      if (firstName === null) {
+          keepgoing = false;
+          break;
+        }
+  
+      const lastName = prompt("Enter Employee Last Name", "Last Name");
+  
+      let salary;
+        do {
+          salary = prompt("Enter Employee's Annual Salary","12345")
+          if (salary === null) {
+          salary = 0;
+        }
+        salary = parseFloat(salary);
+        } while (isNaN(salary));
+  
+      const employee = {
+        firstName,
+        lastName,
+        salary
+      };
+  
+      employees.push(employee);
+  
+      if (!confirm("Do you want to add another new employee?")) {
+        break;
+      }
+    }
+  
+    return employees
 };
 
 // Display the average salary
