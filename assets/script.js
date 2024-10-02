@@ -1,5 +1,6 @@
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
+const employees = [];
 
 // Collect employee data
 // I accidentally developed this block of code below in my "course" folder over this last weekend, so copy/paste was used here.
@@ -7,10 +8,10 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 // Then I created the three prompt windows to collect properties.
 // I had trouble with the next part, creating an array from collected objects while adding more. 
 // Forgot to add the confirm window, so I added that at this point.
+// Next was using isNaN, and parse, after some review to the salary prompt. 
 // To finish I debugged a few times and review a few activities to produce this block.
 // That's when I realized I hadnt created a repo and I had started coding where I was reviewing the syllabus. Oops! So copied block to here    
-const collectEmployees = function () {
-    const employees = [];
+const collectEmployees = (function () {
     let keepgoing = true;
   
     while (keepgoing) {
@@ -45,20 +46,29 @@ const collectEmployees = function () {
     }
   
     return employees
-};
+});
 
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
-    // TODO: Calculate and display the average salary
+    if (employees.length = 0) {
+        return 0;
+    }
 
-    console.log("The average employee salary between our <numberOfEmployees> employee(s) is $<averageSalaryWithTwoDecimals>")
+    let totalSalary = 0;
+    for (let i = 0; i < employees.length; i++) {
+        totalSalary += employees[i].salary;
+    }
+    const averageSalary = (totalSalary / employees.length);
+    
+
+    console.log(`The average employee salary between our ${employees.length} employee(s) is ${averageSalaryWithTwoDecimals}`)
 };
 
 // Select a random employee
 const getRandomEmployee = function (employeesArray) {
     // TODO: Select and display a random employee
   
-    console.log("Congratulations to <employeeFirstName> <employeeLastName>, our random drawing winner!")
+    console.log(`Congratulations to ${randomEmployee}, our random drawing winner!`)
   };
 
 /*
