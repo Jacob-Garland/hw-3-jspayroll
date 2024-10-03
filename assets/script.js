@@ -1,75 +1,58 @@
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
-const employees = [];
 
-// Collect employee data
-// I accidentally developed this block of code below in my "course" folder over this last weekend, so copy/paste was used here.
-// I started with building the 'while' loop, setting the parameters for that also. 
-// Then I created the three prompt windows to collect properties.
-// I had trouble with the next part, creating an array from collected objects while adding more. 
-// Forgot to add the confirm window, so I added that at this point.
-// Next was using isNaN, and parse, after some review to the salary prompt. 
-// To finish I debugged a few times and review a few activities to produce this block.
-// That's when I realized I hadnt created a repo and I had started coding where I was reviewing the syllabus. Oops! So copied block to here    
-const collectEmployees = (function () {
+// Collect employee data   
+const collectEmployees = function () {
+    const employeesArray = [];
+    const newEmployee = {firstName, lastName, salary};
     let keepgoing = true;
   
     while (keepgoing) {
-      const firstName = prompt("Enter Employee First Name:", "First Name")
-      if (firstName === null) {
+      const firstName = prompt("Enter New Employee First Name:", "First Name")
+        if (firstName === null) {
           keepgoing = false;
           break;
-        }
+        };
   
-      const lastName = prompt("Enter Employee Last Name", "Last Name");
-  
-      let salary;
-        do {
-          salary = prompt("Enter Employee's Annual Salary","12345")
-          if (salary === null) {
-          salary = 0;
-        }
-        salary = parseFloat(salary);
-        } while (isNaN(salary));
-  
-      const employee = {
-        firstName,
-        lastName,
-        salary
-      };
-  
-      employees.push(employee);
+      const lastName = prompt("Enter New Employee Last Name", "Last Name");
+
+      const salary = parseFloat(prompt("Enter New Employee's Annual Salary","12345.00")).toFixed(2);
+        if (isNaN(salary)) {
+        alert("WARNING! Not a number. Please enter a valid input.");
+        continue;
+        };
+      
+      employeesArray.push(newEmployee);
   
       if (!confirm("Do you want to add another new employee?")) {
         break;
-      }
-    }
-  
-    return employees
-});
+      };
+    };
+
+    return employeesArray;
+};
 
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
-    if (employees.length = 0) {
-        return 0;
-    }
+    const employeeCount = (employeesArray.length++);
 
     let totalSalary = 0;
-    for (let i = 0; i < employees.length; i++) {
-        totalSalary += employees[i].salary;
-    }
-    const averageSalary = (totalSalary / employees.length);
-    
+    for (i = 0; i < employeesArray.length; i++) {
+        totalSalary += employeesArray[i].employee
+    };
 
-    console.log(`The average employee salary between our ${employees.length} employee(s) is ${averageSalaryWithTwoDecimals}`)
+     averageSalary = totalSalary / employeeCount;
+
+    console.log(`The average employee salary between our ${employeeCount} employee(s) is ${averageSalary.toFixed(2)}`);
 };
 
 // Select a random employee
 const getRandomEmployee = function (employeesArray) {
-    // TODO: Select and display a random employee
+        const randomIndex = Math.floor(Math.random() * employeesArray.length);
+        return employeesArray[randomIndex];
   
     console.log(`Congratulations to ${randomEmployee}, our random drawing winner!`)
-  };
+};
 
 /*
   ====================
